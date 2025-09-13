@@ -1,7 +1,7 @@
 def count_words(text: str) -> int:
     return len(text.split())
 
-def count_each_char(text: str) -> dict[str: int]:
+def count_each_char(text: str) -> dict[str, int]:
     obj = {}
     for char in text:
         item = char.lower()
@@ -10,3 +10,13 @@ def count_each_char(text: str) -> dict[str: int]:
         else:
             obj[item] = obj[item] + 1
     return obj
+
+def sort_on_num(items):
+    return items["num"]
+
+def to_array_stats(obj: dict[str, int]) -> list[dict[str, int | str]]:
+    stat_arr = []
+    for key, val in obj.items():
+        stat_arr.append({"char": key, "num": val})
+    stat_arr.sort(reverse=True, key=sort_on_num)
+    return stat_arr
